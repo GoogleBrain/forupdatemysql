@@ -11,14 +11,14 @@ public class MysqlDemo {
 
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(url);
-//		conn.setAutoCommit(false);
+		conn.setAutoCommit(false);
 		Statement stmt = conn.createStatement();
 		sql = "select * from student s where s.id=1 for update";
 		stmt.executeQuery(sql);
 		Thread.sleep(20000);
 		sql = "update student set name=5 where id=1";
 		stmt.executeUpdate(sql);
-//		conn.commit();
+		conn.commit();
 		System.out.print("执行完毕");
 	}
 }
